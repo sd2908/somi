@@ -1,0 +1,160 @@
+import java.io.*;
+class LessBalanceException extends Exception
+{
+LessBalanceException(double amt)
+{
+System.out.println("Withdrawing"+amt+"is invalid");
+}
+}
+class Account
+{
+static int count=124;
+int an;
+double bal;
+String name;
+Account(double bal,String n)
+{
+System.out.println("\nNew Account opened...!!!\n");
+this.bal=bal;
+count++;
+an=count;
+name=n;
+}
+void deposit(double amt)
+{
+System.out.println("Availabe Balance :"+bal);
+
+bal=bal+amt;
+System.out.println("Rs." +amt +"/- Credited");
+System.out.println("Balance :"+bal);
+}
+void withdraw(double amt) throws LessBalanceException
+{
+System.out.println("\nAvailable Balance :"+bal);
+bal=bal-amt;
+if(bal<500)
+{
+ 
+
+
+ 
+
+
+bal=bal+amt;
+throw new LessBalanceException(amt);
+}
+System.out.println("Rs."+amt+"/-Debited");
+System.out.println("Balanc :\n"+bal);
+}
+void Balance()
+{
+
+System.out.println("\n************Customer information************\n"); System.out.println("Customer Name : "+name); System.out.println("Customer Id : "+an); System.out.println("Balance : "+bal);
+
+}
+
+}
+class AccountDemo1
+{
+static int i=0;
+public static void main(String arg[])throws IOException
+{
+Account ob[] = new Account[10];
+BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+double amt;
+String name;
+int ch;
+double an;
+boolean b= true,f=false;
+int k;
+while(b)
+{
+System.out.println("\n***Bank Transaction***\n");
+System.out.println("1.Open new Account\n2.Deposit\n3.Withdraw\n4.Balance\nExit");
+System.out.println("Enter Your Choice\n");
+ch=Integer.parseInt(br.readLine());
+switch(ch)
+{
+case 1:
+System.out.println("Opening New Account\n");
+System.out.println("Enter your name :\n");
+
+name=br.readLine();
+
+System.out.println("Enter initial amount(> Rs.500/-)"); amt=Double.parseDouble(br.readLine()); ob[i]=new Account(amt,name); i++; break;
+
+case 2:
+System.out.println("Enter Account number\n");
+an=Integer.parseInt(br.readLine());
+for(k=0;k<2;k++)
+if(an==ob[k].an)
+ 
+
+ 
+
+
+{
+f=true; break;
+}
+if(f)
+{
+System.out.println("Enter the Amount for Deposit :");
+amt=Double.parseDouble(br.readLine());
+ob[k].deposit(amt);
+}
+else
+System.out.println("Invalid Account Number....!!!");
+break;
+case 3:
+
+System.out.println("Enter Account number\n");
+an=Integer.parseInt(br.readLine());
+for(k=0;k<2;k++)
+if(an==ob[k].an)
+{
+f=true; break;
+}
+if(f)
+{
+
+System.out.println("Enter the Amount for Withdraw :"); amt=Double.parseDouble(br.readLine()); try
+
+{
+ob[k].withdraw(amt);
+}
+catch(LessBalanceException e)
+{
+}
+}
+else
+System.out.println("Invalid Account Number....!!!");
+break;
+case 4:
+System.out.println("Enter Account number\n");
+an=Integer.parseInt(br.readLine());
+
+for(k=0;k<2;k++)
+if(an==ob[k].an)
+{
+f=true; break;
+}
+if(f)
+{
+ob[k].Balance();
+}
+else
+ 
+
+
+ 
+
+
+System.out.println("Invalid Account Number....!!!");
+break;
+case 5:
+b=false;
+System.exit(1);
+default: System.out.println("Invalid Choice !!!\n");
+}
+}
+}}
