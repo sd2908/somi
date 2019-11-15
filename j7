@@ -1,0 +1,54 @@
+//FileInStreamDemo.java
+
+import java.io.*;
+public class FileInStreamDemo
+{
+public static void main(String[] args)
+{
+File file=new File("DevFile.txt");
+int ch;
+StringBuffer strContent=new StringBuffer(" ");
+FileInputStream fin=null;
+
+try{
+fin= new FileInputStream(file);
+while((ch=fin.read())!=-1)
+strContent.append((char)ch);
+fin.close();
+}
+catch(FileNotFoundException e)
+{
+System.out.println("File"+file.getAbsolutePath()+"could not be found on file System");
+}
+catch(IOException ioe){
+
+System.out.println("Exception while reading file"+ioe);} System.out.println("File Contents:"); System.out.println(strContent); }
+
+}
+
+
+// FileOutputStreamDemo.java
+
+import java.io.*;
+public class FileOutputStreamDemo
+{
+public static void main(String[] args)
+{
+
+FileOutputStream out;
+PrintStream p;
+try
+{
+out=new FileOutputStream("DevFile.txt");
+p=new PrintStream(out);
+p.println("update the file");
+System.out.println("The is Written to DevFile.txt");
+p.close();
+}catch(Exception e){
+ 
+
+
+System.out.println("Error Writing to file");
+}
+}
+}
