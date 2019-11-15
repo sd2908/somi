@@ -1,0 +1,38 @@
+class Nesting
+{
+public static void main(String args[])
+{
+try
+{
+int a = args.length;
+int b=42/a;
+System.out.println("a="+a);
+try{
+
+if(a==1) a=a/(a-a);
+if(a==2)
+{
+int c[]={1};
+c[32]=89;
+}
+}
+catch(ArrayIndexOutOfBoundsException ex)
+{
+System.out.println("Array index out of bound\n");
+}
+catch(ArithmeticException ex)
+{
+System.out.println(" Divide By Zero\n");
+}
+}
+catch(ArithmeticException ex)
+{
+System.out.println(" Divide By Zero\n");
+}
+finally
+{
+System.out.println("Finally Block is Executed\n");
+}
+}
+
+}
