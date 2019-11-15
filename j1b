@@ -1,0 +1,32 @@
+class Outer
+{
+int x=10;
+public int y=20;
+protected int z=30;
+private int p=40;
+void access()
+{
+Inner ob=new Inner();
+ob.display();
+
+}
+class Inner
+{
+void display()
+{
+System.out.println("Default data X="+x);
+System.out.println("Default data Y="+y);
+System.out.println("Default data Z="+z);
+System.out.println("Default data P="+p);
+}
+}
+}
+class Access
+{
+public static void main(String args[])
+{
+System.out.println("Demonstration of Inner class and Access protections\n");
+Outer ob=new Outer();
+ob.access();
+}
+}
